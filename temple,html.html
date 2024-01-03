@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temple Ticket Booking</title>
+<script>
+    function calculateTotal() {
+        var ticketPrice = 10; // Price per ticket
+        var numTickets = parseInt(document.getElementById("numTickets").value);
+        var totalAmount = ticketPrice * numTickets;
+        document.getElementById("totalAmount").innerText = "Total Amount: $" + totalAmount.toFixed(2);
+    }
+
+    function bookTickets() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var numTickets = parseInt(document.getElementById("numTickets").value);
+
+        if (name === "" || email === "" || isNaN(numTickets) || numTickets <= 0) {
+            alert("Please fill in all fields and provide a valid number of tickets.");
+            return;
+        }
+
+        var confirmationMessage = "Thank you, " + name + "! You have booked " + numTickets + " tickets.";
+        alert(confirmationMessage);
+    }
+</script>
+</head>
+<body>
+    <h1>Temple Ticket Booking</h1>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+
+        <label for="numTickets">Number of Tickets:</label>
+        <input type="number" id="numTickets" min="1" required><br>
+
+        <button type="button" onclick="calculateTotal()">Calculate Total</button>
+        <p id="totalAmount">Total Amount: $0.00</p>
+
+        <button type="button" onclick="bookTickets()">Book Tickets</button>
+    </form>
+</body>
+</html>
